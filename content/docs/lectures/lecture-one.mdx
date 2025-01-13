@@ -1,0 +1,133 @@
+---
+title: Week 1 - Foundation & Supabase Setup
+description: Get started with React Native, TypeScript, and Supabase as we lay the groundwork for our TaskGram app.
+---
+
+# Week 1: Foundation & Supabase Setup
+
+Welcome to our first week! We'll be setting up our development environment and learning the core technologies that will power our TaskGram app.
+
+## Workshop Topics
+
+### 1. Introduction to Mobile Development
+
+- Understanding mobile app architectures
+- Native vs. Cross-platform development
+- Why React Native & Expo?
+- Overview of our tech stack
+
+### 2. Development Environment Setup
+
+- Installing necessary tools:
+  - Node.js and npm
+  - Expo CLI
+  - VS Code & helpful extensions
+  - Git & GitHub
+- Setting up your first React Native project
+
+### 3. TypeScript Fundamentals
+
+- Why TypeScript?
+- Basic types and interfaces
+- Type inference and annotations
+- TypeScript with React Native
+
+### 4. React Native Basics
+
+- Components and JSX
+- React Native core components
+- Styling with NativeWind
+- Basic navigation setup
+
+### 5. Supabase Introduction
+
+- What is Supabase?
+- Setting up a Supabase project
+- Basic authentication flow
+- Database setup basics
+
+## Hands-on Project Work
+
+Today we'll start building TaskGram by:
+
+1. Creating a new Expo project
+2. Setting up TypeScript configuration
+3. Implementing basic navigation
+4. Creating initial screens:
+   - Login/Signup
+   - Home
+   - Profile
+
+## Code Examples
+
+### Creating a New Expo Project
+
+```bash
+npx create-expo-app TaskGram --template expo-template-typescript
+cd TaskGram
+npx expo start
+```
+
+### Basic Screen Component
+
+```typescript
+import React from "react";
+import { View, Text } from "react-native";
+
+interface HomeScreenProps {
+  // We'll add props as needed
+}
+
+export default function HomeScreen({}: HomeScreenProps) {
+  return (
+    <View className="flex-1 items-center justify-center bg-white">
+      <Text className="text-xl font-bold">Welcome to TaskGram</Text>
+    </View>
+  );
+}
+```
+
+### Supabase Setup
+
+```typescript
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = "YOUR_SUPABASE_URL";
+const supabaseAnonKey = "YOUR_SUPABASE_ANON_KEY";
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+```
+
+## Assignment
+
+Your first assignment will be to:
+
+1. Set up your development environment
+2. Create a new Expo project
+3. Implement a basic navigation structure
+4. Create placeholder screens
+5. Connect to Supabase
+
+## Resources
+
+<Cards>
+  <Card title="Expo Documentation" href="https://docs.expo.dev/" />
+  <Card
+    title="React Native Docs"
+    href="https://reactnative.dev/docs/getting-started"
+  />
+  <Card title="Supabase Documentation" href="https://supabase.com/docs" />
+  <Card
+    title="TypeScript Handbook"
+    href="https://www.typescriptlang.org/docs/handbook/intro.html"
+  />
+</Cards>
+
+## Next Steps
+
+- Join our Discord channel for support
+- Start working on the assignment
+- Review the provided resources
+- Come prepared with questions for next week
+
+Remember: The best way to learn is by doing. Don't worry if everything doesn't make sense right away - we'll be building on these concepts throughout the course.

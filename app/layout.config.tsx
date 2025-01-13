@@ -10,6 +10,12 @@ export const baseOptions: BaseLayoutProps = {
       text: "Content",
       items: [
         {
+          text: "Overview",
+          description: "Course overview",
+          url: "/content/",
+          active: "nested-url",
+        },
+        {
           text: "Lectures",
           description: "View lecture materials",
           url: "/content/lectures",
