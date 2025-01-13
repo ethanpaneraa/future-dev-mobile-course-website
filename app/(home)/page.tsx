@@ -9,12 +9,12 @@ export default function HomePage() {
       <p className="text-fd-muted-foreground">
         You can open{" "}
         <Link
-          href="/docs"
+          href="/content"
           className="text-fd-foreground font-semibold underline"
         >
-          /docs
+          /content
         </Link>{" "}
-        and see the documentation.
+        to see the course content.
       </p>
     </main>
   );
