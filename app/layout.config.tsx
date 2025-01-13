@@ -1,22 +1,27 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 
-/**
- * Shared layout configurations
- *
- * you can configure layouts individually from:
- * Home Layout: app/(home)/layout.tsx
- * Docs Layout: app/docs/layout.tsx
- */
 export const baseOptions: BaseLayoutProps = {
   nav: {
-    // can be JSX too!
     title: "FutureDev Mobile Development",
   },
   links: [
     {
+      type: "menu",
       text: "Content",
-      url: "/content",
-      active: "nested-url",
+      items: [
+        {
+          text: "Lectures",
+          description: "View lecture materials",
+          url: "/content/lectures",
+          active: "nested-url",
+        },
+        {
+          text: "Assignments",
+          description: "View assignments",
+          url: "/content/assignments",
+          active: "nested-url",
+        },
+      ],
     },
     {
       text: "Schedule",
