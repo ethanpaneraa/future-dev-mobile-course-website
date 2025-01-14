@@ -1,0 +1,193 @@
+---
+title: Assignment 1 - Getting Everything Setup
+description: Getting started with setting up the basics for your project. This will be the foundation of your project for later.
+---
+
+# Week 1 Assignment: TaskGram Setup
+
+Welcome to your first assignment! This week, you'll be setting up your development environment and creating the foundation for the TaskGram app. Follow the steps below carefully, and remember to commit your progress regularly to GitHub.
+
+## Objectives
+
+By completing this assignment, you will:
+
+- Set up a complete React Native development environment
+- Create a new Expo project with TypeScript
+- Implement basic navigation and screens
+- Configure Supabase authentication
+- Apply styling using NativeWind
+
+## Part 1: Environment Setup
+
+1. Install required software:
+
+   - Node.js (LTS version)
+   - Git
+   - VS Code
+   - Expo Go app on your mobile device
+
+2. Install VS Code extensions:
+   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+   - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+   - [React Native Tools](https://marketplace.visualstudio.com/items?itemName=msjsdiag.vscode-react-native)
+   - TypeScript and JavaScript Language Features (built into VS Code)
+
+## Part 2: Project Creation
+
+1. Create a new Expo project:
+
+```bash
+npx create-expo-app TaskGram --template expo-template-typescript
+cd TaskGram
+```
+
+2. Install necessary dependencies:
+
+```bash
+npx expo install @react-navigation/native @react-navigation/native-stack
+npx expo install nativewind tailwindcss react-native-css-transformer
+npx expo install @supabase/supabase-js react-native-url-polyfill
+npx expo install @react-native-async-storage/async-storage
+```
+
+3. Configure NativeWind:
+   - Create `tailwind.config.js`
+   - Update `app.json` and `babel.config.js`
+   - Add TypeScript types
+
+<Callout type="info">
+  Make sure to follow the NativeWind setup guide carefully. Incorrect
+  configuration can lead to styling issues.
+</Callout>
+
+## Part 3: Basic Navigation
+
+Create the following screen components:
+
+1. `app/(auth)/sign-in.tsx`:
+
+```typescript
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
+
+export default function SignIn() {
+  return (
+    <View className="flex-1 items-center justify-center p-4">
+      <Text className="text-2xl font-bold mb-6">Welcome to TaskGram</Text>
+      {/* Add sign-in form components */}
+    </View>
+  );
+}
+```
+
+2. `app/(auth)/sign-up.tsx`
+3. `app/(app)/home.tsx`
+4. `app/(app)/profile.tsx`
+
+## Part 4: Supabase Integration
+
+1. Create a new Supabase project
+2. Set up environment variables:
+
+   - Create `.env` file
+   - Add Supabase URL and anon key
+
+3. Create authentication helper:
+
+```typescript
+// lib/supabase.ts
+import { createClient } from "@supabase/supabase-js";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import "react-native-url-polyfill/auto";
+
+const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!;
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    storage: AsyncStorage,
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: false,
+  },
+});
+```
+
+## Part 5: Authentication Flow
+
+1. Implement sign-in functionality
+2. Implement sign-up functionality
+3. Add session persistence
+4. Create a loading state
+
+## Submission Requirements
+
+Your submission should include:
+
+1. GitHub repository link with:
+
+   - Complete project setup
+   - Working navigation
+   - Basic screen components
+   - Supabase authentication integration
+   - README.md with setup instructions
+
+2. Screen recordings demonstrating:
+   - Navigation between screens
+   - Sign-up process
+   - Sign-in process
+   - Session persistence
+
+<Callout type="warning">
+  Remember to never commit sensitive information like API keys to GitHub. Use
+  environment variables!
+</Callout>
+
+## Grading Criteria
+
+- Environment Setup (10%)
+- Project Structure (20%)
+- Navigation Implementation (20%)
+- Supabase Integration (25%)
+- Authentication Flow (15%)
+- Code Quality & Documentation (10%)
+
+## Resources
+
+<Cards>
+  <Card
+    title="Expo Router Documentation"
+    href="https://docs.expo.dev/router/introduction/"
+  />
+  <Card
+    title="Supabase Auth Guide"
+    href="https://supabase.com/docs/guides/auth/quickstarts/react-native"
+  />
+  <Card
+    title="NativeWind Setup"
+    href="https://www.nativewind.dev/quick-starts/expo"
+  />
+</Cards>
+
+## Need Help?
+
+- Post questions in our Discord channel
+- Attend office hours: [Schedule Link]
+- Review the lecture materials
+- Check the troubleshooting guide in our documentation
+
+<Callout type="tip">
+  Start early! Setting up development environments can sometimes take longer
+  than expected due to various dependencies and configurations.
+</Callout>
+
+## Extra Credit
+
+_If you are looking for some fun extra challenges, then I encourage you to try and implement the following_:
+
+- Password reset functionality
+- OAuth providers (Google, GitHub)
+- Form validation using Zod
+- Custom loading animations
+- Error handling with toast notifications
+
+Remember: The goal is to have a solid foundation for the rest of the course. Take your time to understand each component and concept as you implement them.
